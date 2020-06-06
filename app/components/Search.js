@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react"
 
-function Search() {
-  const [name, setName] = useState()
+function Search(props) {
   return (
-    <div className="container">
-      <input onChange={e => setName(e.target.value)} type="text" />
+    <div style={InputStyle}>
+      <input onChange={e => props.setValue(e.target.value)} style={InputField} placeholder="Search.." type="text" autoFocus />
     </div>
   )
 }
 
+const InputStyle = {
+  textAlign: "center"
+}
+
+const InputField = {
+  margin: "10px",
+  padding: "10px"
+}
 export default Search
