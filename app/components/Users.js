@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from "react"
 import Axios from "axios"
 
 //component
-import ContactItem from "./ContactItem"
+import User from "./User"
 
-function Contact(props) {
+function Users(props) {
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -15,15 +15,15 @@ function Contact(props) {
       .catch(e => console.log(e))
   }, [])
   const listItem = list.map(listItem => {
-    return <ContactItem key={listItem._id} listItem={listItem} />
+    return <User key={listItem._id} listItem={listItem} />
   })
 
   return (
     <div className="container">
-      <h1>Contacts</h1>
+      <h1>Users</h1>
       <ul className="collection">{listItem}</ul>
     </div>
   )
 }
 
-export default Contact
+export default Users
