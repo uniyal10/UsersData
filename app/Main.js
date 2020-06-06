@@ -5,46 +5,24 @@ import { useImmerReducer } from "use-immer"
 import StateContext from "./StateContext"
 import DispatchContext from "./DispatchContext"
 import Axios from "axios"
-Axios.defaults.baseURL = "https://mynotebookcontactapp.herokuapp.com"
+Axios.defaults.baseURL = "https://jsonplaceholder.typicode.com/users"
 
 //Components
 import Contact from "./components/Contact"
-import About from "./components/About"
 import Navbar from "./components/Navbar"
-import AddButton from "./components/AddButton"
 import ContactDetails from "./components/ContactDetails"
-import AddContact from "./components/AddContact"
-import EditContact from "./components/EditContact"
 function Main() {
-  const [list, setList] = useState([])
-
-  useEffect(() => {
-    Axios.get("/")
-      .then(response => {
-        setList(response.data)
-      })
-      .catch(e => console.log(e))
-  }, [])
-
   return (
     <BrowserRouter>
       <Navbar />
       <Switch>
         <Route exact path="/">
-          <Contact list={list} />
-        </Route>
-        <Route exact path="/contact/add">
-          <AddContact list={list} />
-        </Route>
-        <Route exact path="/contacts/edit/:id">
-          <EditContact list={list} />
+          <Contact />
         </Route>
         <Route exact path="/contacts/:id">
-          <ContactDetails list={list} />
+          <ContactDetails />
         </Route>
-        <Route exact path="/about" component={About} />
       </Switch>
-      <AddButton />
     </BrowserRouter>
   )
 }

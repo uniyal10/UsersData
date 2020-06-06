@@ -6,7 +6,10 @@ function ContactItem(props) {
 
   return (
     <li className="collection-item">
-      <Link to={`/contacts/${listItem._id}`}>{listItem.name}</Link>
+      <Link to={`/contacts/${listItem.id}`}>
+        {listItem.id}
+        {listItem.name}
+      </Link>
     </li>
   )
 }
